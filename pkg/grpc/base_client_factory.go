@@ -118,7 +118,7 @@ func (cf baseClientFactory) NewClientFromConfiguration(config *configuration.Cli
 
 	dialOptions = append(
 		dialOptions,
-		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(1024*1024), grpc.MaxCallSendMsgSize(1024*1024)),
+		grpc.WithDefaultCallOptions(grpc.MaxCallRecvMsgSize(64*1024*1024), grpc.MaxCallSendMsgSize(64*1024*1024)),
 		grpc.WithChainUnaryInterceptor(unaryInterceptors...),
 		grpc.WithChainStreamInterceptor(streamInterceptors...))
 	return grpc.Dial(config.Address, dialOptions...)
